@@ -1,0 +1,297 @@
+.home {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem;
+  background-color: #080a10;
+  
+  // High-tech AI background mesh & grid pattern
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.004) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.004) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+
+  .interviewInput-grp {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    width: 100%;
+    max-width: 980px;
+    min-height: 520px;
+    position: relative;
+    padding: 5rem 2.5rem 2.5rem 2.5rem;
+    
+    // Glassmorphic panel styling
+    background: rgba(15, 18, 28, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+    box-shadow: 
+      0 30px 60px rgba(0, 0, 0, 0.6), 
+      0 0 50px rgba(99, 102, 241, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    // AI/Terminal Window Mockup Top Bar
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3.5rem;
+      background: 
+        radial-gradient(circle at 1.5rem 1.75rem, #ef4444 6px, transparent 7px),
+        radial-gradient(circle at 2.5rem 1.75rem, #f59e0b 6px, transparent 7px),
+        radial-gradient(circle at 3.5rem 1.75rem, #10b981 6px, transparent 7px),
+        rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-top-left-radius: 1.5rem;
+      border-top-right-radius: 1.5rem;
+      z-index: 1;
+    }
+
+    &::after {
+      content: "AI INTERVIEW PREPARATION ENVIRONMENT";
+      position: absolute;
+      top: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Courier New', Courier, monospace, system-ui;
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.35);
+      text-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+      pointer-events: none;
+      z-index: 2;
+    }
+  }
+
+  // Label and indicator styling
+  label, p {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: #6366f1;
+      box-shadow: 0 0 8px #6366f1;
+    }
+  }
+
+  .highlight {
+    text-transform: none;
+    font-weight: 400;
+    font-size: 0.72rem;
+    letter-spacing: 0;
+    color: #a5b4fc;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    padding: 0.15rem 0.5rem;
+    border-radius: 2rem;
+    margin-left: 0.5rem;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  // Textarea component custom styling
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    outline: none;
+    padding: 1.1rem;
+    border-radius: 0.75rem;
+    background-color: rgba(10, 12, 20, 0.5);
+    color: #f1f5f9;
+    resize: none;
+    font-family: inherit;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    &:focus {
+      border-color: rgba(99, 102, 241, 0.5);
+      background-color: rgba(10, 12, 20, 0.7);
+      box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(99, 102, 241, 0.12);
+    }
+  }
+
+  // Left Column Layout
+  .left {
+    width: calc(50% - 1rem);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    textarea {
+      flex-grow: 1;
+      min-height: 320px;
+    }
+  }
+
+  // Right Column Layout
+  .right {
+    width: calc(50% - 1rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+
+    .input-grp {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+
+      &:nth-child(2) {
+        flex-grow: 1;
+
+        textarea {
+          flex-grow: 1;
+          min-height: 175px;
+        }
+      }
+    }
+  }
+
+  // Custom premium upload box
+  .file-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: rgba(99, 102, 241, 0.03);
+    border: 1px dashed rgba(99, 102, 241, 0.3);
+    color: #a5b4fc;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23818cf8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: inline-block;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    &:hover {
+      background: rgba(99, 102, 241, 0.08);
+      border-color: #6366f1;
+      color: #ffffff;
+      box-shadow: 
+        0 4px 12px rgba(99, 102, 241, 0.08),
+        0 0 10px rgba(99, 102, 241, 0.1);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  // Generate Button (styled as a high-tech CTA)
+  .generate-btn {
+    grid-column: span 2;
+    width: 100%;
+    max-width: 420px;
+    margin: 1.5rem auto 0.5rem auto;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: #ffffff;
+    border: none;
+    outline: none;
+    padding: 1.1rem 2.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      0 4px 20px rgba(99, 102, 241, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+
+    &::after {
+      content: "";
+      width: 14px;
+      height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+      box-shadow: 
+        0 6px 25px rgba(99, 102, 241, 0.45),
+        0 0 0 2px rgba(255, 255, 255, 0.15) inset;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+    }
+  }
+}
+
+// Responsive layout
+@media (max-width: 768px) {
+  .home {
+    padding: 1.5rem 1rem;
+
+    .interviewInput-grp {
+      flex-direction: column;
+      height: auto;
+      padding: 4.5rem 1.5rem 1.5rem 1.5rem;
+      gap: 1.5rem;
+
+      .left, .right {
+        width: 100%;
+      }
+
+      .left textarea, .right .input-grp:nth-child(2) textarea {
+        min-height: 160px;
+      }
+    }
+  }
+}

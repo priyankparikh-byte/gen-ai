@@ -1,0 +1,853 @@
+// ── Interview Page — Premium Dark Glassmorphic UI ─────────────────────────────
+// Design tokens matching home.scss aesthetic
+
+$bg-deep: #080a10;
+$bg-panel: rgba(15, 18, 28, 0.7);
+$bg-card: rgba(10, 12, 20, 0.5);
+$bg-card-hover: rgba(15, 18, 28, 0.9);
+$border-subtle: rgba(255, 255, 255, 0.08);
+$border-accent: rgba(99, 102, 241, 0.3);
+
+$indigo: #6366f1;
+$indigo-light: #a5b4fc;
+$indigo-glow: rgba(99, 102, 241, 0.12);
+$cyan-glow: rgba(6, 182, 212, 0.1);
+
+$text-primary: #f1f5f9;
+$text-secondary: rgba(255, 255, 255, 0.6);
+$text-muted: rgba(255, 255, 255, 0.35);
+
+$green: #10b981;
+$green-bg: rgba(16, 185, 129, 0.1);
+$green-border: rgba(16, 185, 129, 0.3);
+
+$amber: #f59e0b;
+$amber-bg: rgba(245, 158, 11, 0.1);
+$amber-border: rgba(245, 158, 11, 0.3);
+
+$red: #ef4444;
+$red-bg: rgba(239, 68, 68, 0.1);
+$red-border: rgba(239, 68, 68, 0.3);
+
+$radius: 0.75rem;
+$radius-lg: 1rem;
+$radius-xl: 1.5rem;
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+
+// ── Page Wrapper ──────────────────────────────────────────────────────────────
+.interview-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $bg-deep;
+  background-image:
+    radial-gradient(at 0% 0%, $indigo-glow 0px, transparent 50%),
+    radial-gradient(at 100% 100%, $cyan-glow 0px, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.004) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.004) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+// ── Three-Column Layout ───────────────────────────────────────────────────────
+.interview-layout {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  min-height: calc(100vh - 4rem);
+  background: $bg-panel;
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid $border-subtle;
+  border-radius: $radius-xl;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(99, 102, 241, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+
+// ── Vertical Dividers ─────────────────────────────────────────────────────────
+.interview-divider {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    $border-subtle 15%,
+    rgba(99, 102, 241, 0.15) 50%,
+    $border-subtle 85%,
+    transparent 100%
+  );
+  flex-shrink: 0;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// LEFT NAV
+// ═══════════════════════════════════════════════════════════════════════════════
+.interview-nav {
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  gap: 1.5rem;
+
+  .nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  &__label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: $text-muted;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 0.75rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: $radius;
+    color: $text-secondary;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition;
+    text-align: left;
+    font-family: inherit;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.03);
+      color: $text-primary;
+      border-color: $border-subtle;
+    }
+
+    &--active {
+      background: rgba(99, 102, 241, 0.08);
+      border-color: $border-accent;
+      color: $indigo-light;
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.06);
+
+      .interview-nav__icon {
+        color: $indigo;
+        filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.4));
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    color: $text-secondary;
+    flex-shrink: 0;
+    transition: $transition;
+  }
+
+  .download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.75rem 1rem;
+    border-radius: $radius;
+    width: 100%;
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// CENTER CONTENT
+// ═══════════════════════════════════════════════════════════════════════════════
+.interview-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 4rem);
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.2);
+    border-radius: 10px;
+
+    &:hover {
+      background: rgba(99, 102, 241, 0.35);
+    }
+  }
+}
+
+
+// ── Content Header ────────────────────────────────────────────────────────────
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $border-subtle;
+
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: $text-primary;
+    letter-spacing: -0.01em;
+    position: relative;
+    padding-left: 1rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 70%;
+      background: linear-gradient(180deg, $indigo, #818cf8);
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+    }
+  }
+
+  &__count {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: $indigo-light;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid $border-accent;
+    padding: 0.3rem 0.85rem;
+    border-radius: 2rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+
+// ── Question Cards ────────────────────────────────────────────────────────────
+.q-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.q-card {
+  background: $bg-card;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: $transition;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+  }
+
+  &__index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(99, 102, 241, 0.05));
+    border: 1px solid $border-accent;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: $indigo-light;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  &__question {
+    flex: 1;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: $text-primary;
+    line-height: 1.5;
+    margin: 0;
+
+    // Override inherited label styles from home if needed
+    &::before {
+      display: none;
+    }
+  }
+
+  &__chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    color: $text-muted;
+    transition: $transition;
+    flex-shrink: 0;
+
+    &--open {
+      transform: rotate(180deg);
+      color: $indigo-light;
+    }
+  }
+
+  &__body {
+    padding: 0 1.25rem 1.25rem 1.25rem;
+    margin-left: calc(34px + 0.85rem + 1.25rem);
+    border-top: 1px solid $border-subtle;
+    animation: slideDown 0.25s ease-out;
+  }
+
+  &__section {
+    padding-top: 1rem;
+
+    & + & {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.05);
+    }
+
+    p {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.7;
+      margin: 0;
+      // Reset any inherited label styles
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+
+    &--intention {
+      color: #c084fc;
+      background: rgba(192, 132, 252, 0.1);
+      border: 1px solid rgba(192, 132, 252, 0.25);
+    }
+
+    &--answer {
+      color: $green;
+      background: $green-bg;
+      border: 1px solid $green-border;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+// ── Roadmap Cards ─────────────────────────────────────────────────────────────
+.roadmap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.roadmap-day {
+  background: $bg-card;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-lg;
+  padding: 1.25rem;
+  transition: $transition;
+  position: relative;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  // Connecting line between days
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: -0.85rem;
+    left: 2.1rem;
+    width: 1px;
+    height: 0.85rem;
+    background: linear-gradient(180deg, $border-accent, transparent);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    height: 30px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(99, 102, 241, 0.05));
+    border: 1px solid $border-accent;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: $indigo-light;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  &__focus {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $text-primary;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  &__tasks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 0.5rem;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      color: $text-secondary;
+      line-height: 1.5;
+      padding: 0.35rem 0;
+      transition: $transition;
+
+      &:hover {
+        color: $text-primary;
+      }
+    }
+  }
+
+  &__bullet {
+    display: inline-flex;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $indigo;
+    box-shadow: 0 0 6px rgba(99, 102, 241, 0.3);
+    margin-top: 0.4rem;
+    flex-shrink: 0;
+  }
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// RIGHT SIDEBAR
+// ═══════════════════════════════════════════════════════════════════════════════
+.interview-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 4rem);
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    $border-subtle 20%,
+    rgba(99, 102, 241, 0.12) 50%,
+    $border-subtle 80%,
+    transparent 100%
+  );
+}
+
+
+// ── Match Score Ring ──────────────────────────────────────────────────────────
+.match-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+
+  &__label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: $text-muted;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &__ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  &__track {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 6;
+  }
+
+  &__fill {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke-dasharray 1s ease;
+  }
+
+  &__text {
+    display: flex;
+    align-items: baseline;
+    z-index: 1;
+  }
+
+  &__value {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  &__pct {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-left: 2px;
+  }
+
+  &__sub {
+    font-size: 0.72rem;
+    color: $text-muted;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+// Score Color Variants
+.score--high {
+  .match-score__fill { stroke: $green; filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.4)); }
+  .match-score__value, .match-score__pct { color: $green; }
+}
+
+.score--mid {
+  .match-score__fill { stroke: $amber; filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.4)); }
+  .match-score__value, .match-score__pct { color: $amber; }
+}
+
+.score--low {
+  .match-score__fill { stroke: $red; filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.4)); }
+  .match-score__value, .match-score__pct { color: $red; }
+}
+
+
+// ── Skill Gaps ────────────────────────────────────────────────────────────────
+.skill-gaps {
+  &__label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: $text-muted;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.85rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2rem;
+  letter-spacing: 0.02em;
+  transition: $transition;
+
+  &--high {
+    color: $red;
+    background: $red-bg;
+    border: 1px solid $red-border;
+
+    &:hover {
+      background: rgba(239, 68, 68, 0.18);
+      box-shadow: 0 2px 8px rgba(239, 68, 68, 0.15);
+    }
+  }
+
+  &--medium {
+    color: $amber;
+    background: $amber-bg;
+    border: 1px solid $amber-border;
+
+    &:hover {
+      background: rgba(245, 158, 11, 0.18);
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
+    }
+  }
+
+  &--low {
+    color: $green;
+    background: $green-bg;
+    border: 1px solid $green-border;
+
+    &:hover {
+      background: rgba(16, 185, 129, 0.18);
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+    }
+  }
+}
+
+
+// ── Quick Stats ───────────────────────────────────────────────────────────────
+.quick-stats {
+  &__label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: $text-muted;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.85rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 0.5rem;
+  background: $bg-card;
+  border: 1px solid $border-subtle;
+  border-radius: $radius;
+  transition: $transition;
+  gap: 0.25rem;
+
+  &:hover {
+    border-color: $border-accent;
+    background: rgba(99, 102, 241, 0.04);
+    box-shadow: 0 2px 10px rgba(99, 102, 241, 0.06);
+  }
+
+  &__value {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: $indigo-light;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  &__name {
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// RESPONSIVE
+// ═══════════════════════════════════════════════════════════════════════════════
+@media (max-width: 1100px) {
+  .interview-layout {
+    flex-direction: column;
+  }
+
+  .interview-nav {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 1.5rem;
+
+    .nav-content {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .interview-nav__label {
+      display: none;
+    }
+
+    .download-btn {
+      width: auto;
+      white-space: nowrap;
+    }
+  }
+
+  .interview-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      $border-subtle 15%,
+      rgba(99, 102, 241, 0.15) 50%,
+      $border-subtle 85%,
+      transparent 100%
+    );
+  }
+
+  .interview-content {
+    max-height: none;
+  }
+
+  .interview-sidebar {
+    width: 100%;
+    max-height: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1.5rem;
+
+    .match-score,
+    .skill-gaps,
+    .quick-stats {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .sidebar-divider {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .interview-page {
+    padding: 0.75rem;
+  }
+
+  .interview-layout {
+    border-radius: $radius-lg;
+  }
+
+  .interview-content {
+    padding: 1.25rem;
+  }
+
+  .interview-nav {
+    flex-direction: column;
+    gap: 0.75rem;
+
+    .nav-content {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .download-btn {
+      width: 100%;
+    }
+  }
+
+  .q-card__body {
+    margin-left: 0;
+  }
+
+  .interview-sidebar {
+    flex-direction: column;
+  }
+}
