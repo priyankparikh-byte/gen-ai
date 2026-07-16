@@ -15,7 +15,8 @@ export async function register({username,email,password}) {
 
     return response.data
     } catch(e){
-       console.log(e) 
+       console.error("Register error:", e.response?.data || e.message)
+       throw e
     }
     
     
@@ -32,7 +33,8 @@ export async function login({email,password}) {
 
       return response.data
     }catch (e){
-        console.log(e)
+        console.error("Login error:", e.response?.data || e.message)
+        throw e
     }
     
 }
@@ -44,7 +46,8 @@ export async function logout() {
 
     return response.data
     }catch (e){
-        console.log(e)
+        console.error("Logout error:", e.response?.data || e.message)
+        throw e
 
     }
     
@@ -57,7 +60,12 @@ export async function getme() {
 
     return response.data
     }catch (e){
-        console.log(e)
+        // Return null for 401 (not authenticated) instead of throwing
+        if (e.response?.status === 401) {
+            return null
+        }
+        console.error("GetMe error:", e.response?.data || e.message)
+        throw e
 
     }
 
