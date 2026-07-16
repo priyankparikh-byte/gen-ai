@@ -59,20 +59,21 @@ export const useAuth = () => {
    };
    useEffect(() => {
       const getAndSet = async () => {
+         setloading(true);
          try {
             const data = await getme();
             if (data?.user) {
                setuser(data.user);
             }
          } catch (err) {
-            console.error(err);
+            console.error("Failed to fetch user:", err);
          } finally {
             setloading(false);
          }
       };
 
       getAndSet();
-   }, [setuser, setloading]);
+   }, []);
 
 
    return { user, loading, handleregister, handlelogin, handlelogout };
